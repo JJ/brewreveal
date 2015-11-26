@@ -14,9 +14,9 @@ use constant REVEAL_GIT_URL => 'git@github.com:hakimel/reveal.js.git';
 
 my $dir = shift || "/tmp";
 
-Git::Repository->run( clone => REVEAL_GIT_URL, $dir,
+Git::Repository->run( clone => REVEAL_GIT_URL, "--depth=1", $dir,
 		      { git => '/usr/bin/git',
-			depth => 1} );
+			quiet => 1 } );
 
 my $r = Git::Repository->new( git_dir => $dir );
 
